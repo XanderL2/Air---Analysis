@@ -6,7 +6,9 @@ app = Flask(__name__)
 # Routes
 @app.route("/", methods=['GET'])
 def root():
+    GetDailyPollutionGraph(5, "el Poblenou")
     return render_template('index.html')
+
 
 
 if __name__ == "__main__":
