@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import os;
 
 def GetDailyPollutionGraph(day, neighborhood):
+
     # Data Extraction
     statistics = db['CalidadAire']
     contaminants = db['Contaminantes']
@@ -12,6 +13,8 @@ def GetDailyPollutionGraph(day, neighborhood):
     stations = stations.find_one({"Nom_barri": neighborhood}, {"_id": 0, "Estacio": 1}).get("Estacio")
     if not stations:
         return None
+
+
 
     statistics = statistics.find({"ESTACIO": stations, "DIA": day})
 

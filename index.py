@@ -6,9 +6,6 @@ app = Flask(__name__)
 # Routes
 @app.route("/", methods=['GET'])
 def root():
-    data = GetDailyPollutionGraph(5, "el Poblenou")
-    print(data)
-
     return render_template('index.html')
 
 
