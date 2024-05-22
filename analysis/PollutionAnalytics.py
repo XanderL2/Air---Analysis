@@ -1,6 +1,7 @@
 import pandas as pd;
-import matplotlib.pyplot as plt
 from db import db
+import matplotlib.pyplot as plt
+import os;
 
 
 
@@ -47,7 +48,6 @@ def GetDailyPollutionGraph (day, neighborhood):
                                                         .drop( columns= ["_id"])
 
 
-
     # Data visualization 
     plt.style.use('seaborn-darkgrid')
     plt.plot(statisticsDF["Desc_Contaminant"], statisticsDF['H12'], marker='o', linestyle='-', color='b', label='Pollution Level (H12)')
@@ -64,9 +64,15 @@ def GetDailyPollutionGraph (day, neighborhood):
     plt.tight_layout()
     
 
-    plt.savefig("./static/dataVisualization/graphic.png", bbox_inches='tight', dpi=300);
-    
+    path = "./static/dataVisualization/graphic.png";
 
+    if(os.path.exists(path)):
+        os.remove(path)
+
+
+    plt.savefig("./static/dataVisualization/graphic.png", bbox_inches='tight', dpi=300);
+    return statisticsDF.to_dict(orient='records');
+    
 
 
 

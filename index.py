@@ -13,9 +13,13 @@ app = Flask(__name__);
 def root():
 
 
-    GetDailyPollutionGraph(5, "el Poblenou");
+    data = GetDailyPollutionGraph(5, "el Poblenou")
 
 
+    print("\n\n")
+    print(data)
+
+    print("\n\n")
 
     return render_template('index.html');
 
