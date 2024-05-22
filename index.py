@@ -6,8 +6,11 @@ app = Flask(__name__)
 # Routes
 @app.route("/", methods=['GET'])
 def root():
-    GetDailyPollutionGraph(5, "el Poblenou")
+    data = GetDailyPollutionGraph(5, "el Poblenou")
+    print(data)
+
     return render_template('index.html')
+
 
 if __name__ == "__main__":
     app.run(host='localhost', port=5000, debug=True)

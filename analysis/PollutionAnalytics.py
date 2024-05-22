@@ -43,14 +43,6 @@ def GetDailyPollutionGraph(day, neighborhood):
         print(f"Error loading style: {e}")
         plt.style.use('ggplot')  # Usar un estilo alternativo
 
-
-    #Data Analysis 
-    statisticsDF = pd.merge(statisticsDF, contaminantsDF, on="CODI_CONTAMINANT")\
-                                                        .drop( columns= ["_id"])
-
-
-    # Data visualization 
-    plt.style.use('seaborn-darkgrid')
     plt.plot(statisticsDF["Desc_Contaminant"], statisticsDF['H12'], marker='o', linestyle='-', color='b', label='Pollution Level (H12)')
 
     plt.xlabel('Contaminant Name')
